@@ -1,12 +1,11 @@
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom'; // Hapus Routes dan Route
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
 import { useState, useEffect } from 'react';
 import { supabase } from './lib/supabase';
 
 function App() {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState<any>(null); // Ubah tipe state session
 
   useEffect(() => {
     supabase.auth.getSession()
@@ -24,13 +23,11 @@ function App() {
       
         
           
-            
-              {session ? (
-                <AdminDashboard session={session} />
-              ) : (
-                <AdminLogin />
-              )}
-            
+            {session ? (
+              <AdminDashboard /> // Hapus session={session}
+            ) : (
+              <AdminLogin />
+            )}
           
         
       
